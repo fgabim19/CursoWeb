@@ -38,26 +38,12 @@ const invoice = {
     return `Hola ${this.client.firstname}`;
   },
 };
-// mantiene el valor y al modificar la segunda modifica la primera tambien
-// const invoice2 = invoice;
 
-// clona el objeto el cual equivale a una nueva instancia
-const invoice2 = { ...invoice };
+invoice.client.firstname = "Josep";
+// invoice.total = 5000;
+console.log(invoice);
 
-const result = invoice === invoice2;
+const greeting = invoice.greeting();
+console.log(greeting);
 
-console.log(result);
-
-// una sola linea
-// if (result) console.log(result);
-// else console.log("no son iguales");
-
-if (result) {
-  console.log(result);
-} else {
-  console.log("no son iguales");
-}
-
-invoice2.id = 20;
-console.log(invoice.id);
-console.log(invoice2.id);
+console.log("Total: " + invoice.total());
