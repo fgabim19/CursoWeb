@@ -38,22 +38,27 @@ const invoice = {
     return `Hola ${this.client.firstname}`;
   },
 };
-// cuando un objeto no esta definido en el json
-// para evitar un error se coloca ?, y este devulve su valor
-// con esto evaluamos si existe o si tiene un valor nulo ese objeto
-console.log(invoice.company?.name);
+// mantiene el valor y al modificar la segunda modifica la primera tambien
+// const invoice2 = invoice;
 
-if (invoice.company != undefined && invoice.company.name) {
-  console.log("perfecto");
+// clona el objeto el cual equivale a una nueva instancia
+const invoice2 = { ...invoice };
+
+const result = invoice === invoice2;
+
+console.log(result);
+
+// una sola linea
+// if (result) console.log(result);
+// else console.log("no son iguales");
+
+if (result) {
+  console.log(result);
 } else {
-  console.log("no viene la empresa");
+  console.log("no son iguales");
 }
 
-// lo anterior es lo mismo que
-if (invoice.company?.name) {
-  console.log("perfecto");
-} else {
-  console.log("no viene la empresa");
-}
+invoice2.id = 20;
+console.log(invoice.id);
+console.log(invoice2.id);
 
-console.log(invoice.client?.address?.street);
